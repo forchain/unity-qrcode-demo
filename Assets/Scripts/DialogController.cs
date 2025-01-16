@@ -4,7 +4,6 @@ using TMPro;
 
 public class DialogController : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogPanel;
     [SerializeField] private TMP_InputField urlInput;
     [SerializeField] private QRCodeGenerator qrGenerator;
     
@@ -12,8 +11,6 @@ public class DialogController : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(ShowDialog);
         
-        if (dialogPanel != null)
-            dialogPanel.SetActive(false);
     }
 
     void ShowDialog()
@@ -24,10 +21,6 @@ public class DialogController : MonoBehaviour
             return;
         }
 
-        if (dialogPanel != null)
-        {
-            dialogPanel.SetActive(true);
-            qrGenerator.GenerateQRCode(urlInput.text);
-        }
+        qrGenerator.GenerateQRCode(urlInput.text);
     }
 }
